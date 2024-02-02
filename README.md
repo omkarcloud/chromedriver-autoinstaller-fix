@@ -1,5 +1,7 @@
 # chromedriver-autoinstaller-fix
 
+## DEPRECATED! The Official Respositoyr [chromedriver-autoinstaller](https://github.com/yeongbin-jo/python-chromedriver-autoinstaller) has now been updated to address the issues with Chrome 115. We recommend using the [official repository](https://github.com/yeongbin-jo/python-chromedriver-autoinstaller).
+
 chromedriver-autoinstaller-fix was created to address the "WARNING:root:Cannot find chromedriver for the currently installed Chrome version." error, which remains unresolved in the original [python-chromedriver-autoinstaller](https://github.com/yeongbin-jo/python-chromedriver-autoinstaller) repository. 
 
 By using chromedriver-autoinstaller-fix, you shouldn't encounter installation errors if you're using Chrome versions greater than 115.
