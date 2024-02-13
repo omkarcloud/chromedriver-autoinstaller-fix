@@ -34,7 +34,7 @@ elif sys.argv[-1] == "clean":
 
 setup(
     name="chromedriver-autoinstaller-fix",
-    version="1.0.4",
+    version="1.0.5",
     author='Chetan Jain',
     author_email='chetan@omkar.cloud',
     description="Automatically install chromedriver that supports the currently installed version of chrome.",

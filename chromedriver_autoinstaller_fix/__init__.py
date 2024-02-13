@@ -39,6 +39,3 @@ def get_chrome_version():
     :return: The version of chrome
     """
     return utils.get_chrome_version()
-
-if __name__ == "__main__":
-    install()

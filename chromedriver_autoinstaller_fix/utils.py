@@ -16,7 +16,6 @@ import zipfile
 from io import BytesIO
 import platform as pf
 from packaging import version
-
 __author__ = "Chetan Jain <chetan@omkar.cloud>"
 
 from typing import AnyStr, Optional
@@ -160,35 +159,14 @@ def get_chrome_version():
             .strip()
         )
     elif platform == "win":
-        # check both of Program Files and Program Files (x86).
-        # if the version isn't found on both of them, version is an empty string.
-        try:
-            dirs = [f.name for f in os.scandir("C:\\Program Files\\Google\\Chrome\\Application") if f.is_dir() and re.match("^[0-9.]+$", f.name)]
-            if dirs:
-                version = max(dirs)
-            else:
-                dirs = [f.name for f in os.scandir("C:\\Program Files (x86)\\Google\\Chrome\\Application") if f.is_dir() and re.match("^[0-9.]+$", f.name)]
-                version = max(dirs) if dirs else ''
-        except:
-            try:
-                dirs = [f.name for f in os.scandir("C:\\Program Files (x86)\\Google\\Chrome\\Application") if f.is_dir() and re.match("^[0-9.]+$", f.name)]
-                if dirs:
-                    version = max(dirs)
-                else:
-                    dirs = [f.name for f in os.scandir("C:\\Program Files\\Google\\Chrome\\Application") if f.is_dir() and re.match("^[0-9.]+$", f.name)]
-                    version = max(dirs) if dirs else ''
-            except:
-                try:
-                    dirs = [f.name for f in os.scandir(f"{os.path.expanduser('~')}\\AppData\\Local\\Google\\Chrome\\Application") if f.is_dir() and re.match("^[0-9.]+$", f.name)]
-                    if dirs:
-                        version = max(dirs)
-                    else:
-                        dirs = [f.name for f in os.scandir("C:\\Program Files\\Google\\Chrome\\Application") if f.is_dir() and re.match("^[0-9.]+$", f.name)]
-                        version = max(dirs) if dirs else ''
-                except:
-                    raise ValueError("You don't have Google Chrome installed on your Windows system. Please install it by visiting https://www.google.com/chrome/.")
-                if not version:
-                    raise ValueError("You don't have Google Chrome installed on your Windows system. Please install it by visiting https://www.google.com/chrome/.")
+        PROGRAMFILES = f"{os.environ.get('PROGRAMW6432') or os.environ.get('PROGRAMFILES')}\\Google\\Chrome\\Application"
+        PROGRAMFILESX86 = f"{os.environ.get('PROGRAMFILES(X86)')}\\Google\\Chrome\\Application"
+        
+        path = PROGRAMFILES if os.path.exists(PROGRAMFILES) else PROGRAMFILESX86 if os.path.exists(PROGRAMFILESX86) else None
+
+        dirs = [f.name for f in os.scandir(path) if f.is_dir() and re.match("^[0-9.]+$", f.name)] if path else None
+
+        version = max(dirs) if dirs else None
     else:
         return
     return version
