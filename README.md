@@ -1,5 +1,7 @@
 # chromedriver-autoinstaller-fix
 
+# DEPRECATED! The Official Respository [chromedriver-autoinstaller](https://github.com/yeongbin-jo/python-chromedriver-autoinstaller) has now been updated to address the issues with Chrome 115. We recommend using the official repository as it is better maintained than current chromedriver-autoinstaller-fix repository. You can find it [here](https://github.com/yeongbin-jo/python-chromedriver-autoinstaller)
+
 The library `chromedriver-autoinstaller-fix` addresses and resolves certain issues present in the original [python-chromedriver-autoinstaller](https://github.com/yeongbin-jo/python-chromedriver-autoinstaller).
 
 ## Installation
